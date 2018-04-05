@@ -97,8 +97,9 @@ $(document).ready(function(){
       newGame = new Game("O", "X");
     }
     newGame.setNewBoard();
-
+    var gameCounter = 0;
     $("td").click(function(){
+      gameCounter++;
       var currentSpace = newGame.board.spaces[this.id];
 
       if (currentSpace.checkForMark() === false) {
@@ -126,7 +127,9 @@ $(document).ready(function(){
           }
         }
       }
+      if(gameCounter === 9 && newGame.gameOver === false){
+        alert("Draw!");
+      }
     });
-
   });
 });
